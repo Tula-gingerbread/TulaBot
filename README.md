@@ -1,3 +1,3 @@
-I created this bot only for training discord.py . I don't plan it as a serious project
+I created this bot for training discord.py
 
-Я создал этого бота только для обучения discord.py. Я не планирую его как серьезный проект
+Я создал этого бота для обучения discord.py.
