@@ -75,8 +75,8 @@ async def status(ctx: SlashContext, status: str):
 
 
 
-# Команда - колесо_фартуны
-@slash.slash(name="Колесо_фартуны", description="Рандомный выбор из трех вариантов")
+# Команда - колесо_фортуны
+@slash.slash(name="Колесо_фортуны", description="Рандомный выбор из трех вариантов")
 async def roll(ctx: SlashContext, first: str, second: str, third: str=None):
     if third is not None:
         result = random.choice([first, second, third])
