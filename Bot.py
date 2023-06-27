@@ -78,9 +78,12 @@ async def status(ctx: SlashContext, status: str):
 # Команда - колесо_фартуны
 @slash.slash(name="Колесо_фартуны", description="Рандомный выбор из трех вариантов")
 async def roll(ctx: SlashContext, first: str, second: str, third: str=None):
-    choice_list = [first, second, third]
-    random_choice = random.choice(choice_list)
-    await ctx.send(f'Выбор пал на... "{random_choice}"')
+    if third is not None:
+        result = random.choice([first, second, third])
+    else:
+        result = random.choice([first, second])
+
+    await ctx.send(f'Выбор пал на... "{result}"')
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда колесо_фартуны. Запросил - {user_name} (UserID: {user_id})')
 
