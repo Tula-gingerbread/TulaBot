@@ -1,0 +1,3 @@
+discord.py
+discord
+discord-py-slash-command
