@@ -154,6 +154,4 @@ URL на ваш аватар: {user_avatar}
 
 # Запуск бота
 if __name__ == '__main__':
-    client.run('MTEyMjY0MDYxNTE4NDgxMDE1NQ.GV04_a.M7PMthac-VNV7_UOXbDHTf1gr8FbcisgP5aLSA')
-
-# MTEyMjY0MDYxNTE4NDgxMDE1NQ.GV04_a.M7PMthac-VNV7_UOXbDHTf1gr8FbcisgP5aLSA
+    client.run('DONT FORGIVE TOKEN')
