@@ -5,6 +5,10 @@ import discord.ext.commands as commands
 import random
 from time import sleep
 
+say_any = 'DONT FORGIVE ROLE NAME FOR COMMAND SAY'
+set_status = 'DONT FORGIVE ROLE NAME FOR CHANGE BOT STATUS'
+
+
 client = discord.Client()
 slash = SlashCommand(client, sync_commands=True)
 
@@ -47,8 +51,8 @@ https://cdn.discordapp.com/attachments/1101107578336980992/1122915610523877477/T
 
 
 # Команда - say. Отправляет сообщение от имени бота
-@slash.slash(name="say", description="Произнести что либо от имени бота. Нужна роль \"sayer\"")
-@commands.has_role("sayer")
+@slash.slash(name="say", description=f"Произнести что либо от имени бота. Нужна роль {say_any}")
+@commands.has_role(say_any)
 async def say(ctx: SlashContext, text: str):
     await ctx.send(text)
     user_id = ctx.author.id; user_name = ctx.author.name
@@ -57,7 +61,8 @@ async def say(ctx: SlashContext, text: str):
 
 
 # Команда - установить_статус. Меняет статус бота
-@slash.slash(name="установить_статус", description="Изменить статус бота. Три варианта: online, idle, dnd")
+@slash.slash(name="установить_статус", description=f"Изменить статус бота. Три варианта: online, idle, dnd. Нужна роль {set_status}")
+@commands.has_role(set_status)
 async def status(ctx: SlashContext, status: str):
     if status == 'online':
         await client.change_presence(status=discord.Status.online)
@@ -90,13 +95,13 @@ async def roll(ctx: SlashContext, first: str, second: str, third: str=None):
 
 
 # Команда - hack. Взламывает роль "sayer" при правильном пароле (ilovebebra)
-@slash.slash(name="hack", description="Возможность взломать роль \"sayer\"! Подсказка: шдщмуиуикф")
+@slash.slash(name="hack", description=f"Возможность взломать роль {say_any}! Подсказка: шдщмуиуикф")
 async def hack(ctx: SlashContext, password: str):
     user_id = ctx.author.id; user_name = ctx.author.name
     if password == 'ilovebebra':
-        role = discord.utils.get(ctx.guild.roles, name='sayer')
+        role = discord.utils.get(ctx.guild.roles, name=say_any)
         await ctx.author.add_roles(role)
-        await ctx.send('Успешно! Вы получили роль "sayer"')
+        await ctx.send(f'Успешно! Вы получили роль {say_any}')
         print(f'Команда hack. Верный пароль. Запросил - {user_name} (UserID: {user_id})')
     else:
         await ctx.send('Неверный пароль! Блокировка системы... ')
@@ -106,12 +111,12 @@ async def hack(ctx: SlashContext, password: str):
 
 
 
-@slash.slash(name="993", description="Я умер... прости")
+@slash.slash(name="1000-7", description="Я умер... прости")
 async def dead(ctx: SlashContext):
     alpha = 1007
     delta = 7
     user_id = ctx.author.id; user_name = ctx.author.name
-    print(f'Команда 993. Запросил - {user_name} (UserID: {user_id}) Он дед! Бейте его!')
+    print(f'Команда 1000-7. Запросил - {user_name} (UserID: {user_id}) Он дед! Бейте его!')
     await ctx.send('Я умер, прости')
     while alpha>0: 
         omicron = alpha - delta
@@ -129,10 +134,10 @@ async def help(ctx: SlashContext):
 /scpsl - спойлер к SCP SL
 /say - говорит что либо от имени бота. Нужна роль 'sayer'
 /установить_статус - Три варианта: online, idle, dnd - в сети, неактивен и не беспокоить соответственно
-/колесо_фартуны - выбирает одно из трех (или двух) 
+/колесо_фортуны - выбирает одно из трех (или двух) 
 /hack - позволяет взломать роль 'sayer'. Подсказка: шдщмуиуикф. Мьютит при неверном пароле на одну минуту
-/993 - ни нада дядя, не пиши эту команду
-/info - показывает инфо о вас``` ''')
+/1000-7 - ни нада дядя, не пиши эту команду
+/info - показывает инфо о вас```''')
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда help. Запросил - {user_name} (UserID: {user_id})')
 
