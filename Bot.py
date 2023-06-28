@@ -54,7 +54,7 @@ https://cdn.discordapp.com/attachments/1101107578336980992/1122915610523877477/T
 @slash.slash(name="say", description=f"Произнести что либо от имени бота. Нужна роль {say_any}")
 @commands.has_role(say_any)
 async def say(ctx: SlashContext, text: str):
-    await ctx.send(text)
+    await ctx.channel.send(text)
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда say. Запросил - {user_name} (UserID: {user_id})')
 
