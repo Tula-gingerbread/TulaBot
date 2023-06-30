@@ -20,10 +20,10 @@ async def on_ready():
 
 
 
-# команда - pingcheck. Отправляет задержку Discord API
+# команда - ping. Отправляет задержку Discord API
 @slash.slash(name="ping", description="Проверить задержку Discord API")
 async def ping(ctx: SlashContext):
-    await ctx.send(f"Задержка Discord API: {round(client.latency*1000)}ms")
+    await ctx.send(f"Задержка Discord API + задержка бота: {round(client.latency*1000)}ms. Проверить статус и задержку серверов Discord: https://discordstatus.com/")
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда ping. Запросил - {user_name} (UserID: {user_id})')
 
@@ -36,17 +36,6 @@ async def rick(ctx: SlashContext):
     await ctx.send(random_roll)
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда rickroll. Запросил - {user_name} (UserID: {user_id})')
-
-
-
-# Команда - SL. в ctx.send все понятно...
-@slash.slash(name="SCPSL", description="спойлер к SCP SL...")
-async def sl(ctx: SlashContext):
-    await ctx.send('''Не пов, а рил:
-Когда понял смысл SCP SL:
-https://cdn.discordapp.com/attachments/1101107578336980992/1122915610523877477/Timeline-1.mp4''')
-    user_id = ctx.author.id; user_name = ctx.author.name
-    print(f'Команда SCPSL. Запросил - {user_name} (UserID: {user_id})')
 
 
 
@@ -111,32 +100,15 @@ async def hack(ctx: SlashContext, password: str):
 
 
 
-@slash.slash(name="1000-7", description="Я умер... прости")
-async def dead(ctx: SlashContext):
-    alpha = 1007
-    delta = 7
-    user_id = ctx.author.id; user_name = ctx.author.name
-    print(f'Команда 1000-7. Запросил - {user_name} (UserID: {user_id}) Он дед! Бейте его!')
-    await ctx.send('Я умер, прости')
-    while alpha>0: 
-        omicron = alpha - delta
-        await ctx.channel.send(str(omicron))
-        alpha = omicron
-        sleep(1)
-
-
-
 
 @slash.slash(name='help', description='Показать инфо о командах')
 async def help(ctx: SlashContext):
     await ctx.send('''```/ping - показывает задержку Discord API
 /rickroll - ?!
-/scpsl - спойлер к SCP SL
 /say - говорит что либо от имени бота. Нужна роль 'sayer'
 /установить_статус - Три варианта: online, idle, dnd - в сети, неактивен и не беспокоить соответственно
 /колесо_фортуны - выбирает одно из трех (или двух) 
 /hack - позволяет взломать роль 'sayer'. Подсказка: шдщмуиуикф. Мьютит при неверном пароле на одну минуту
-/1000-7 - ни нада дядя, не пиши эту команду
 /info - показывает инфо о вас```''')
     user_id = ctx.author.id; user_name = ctx.author.name
     print(f'Команда help. Запросил - {user_name} (UserID: {user_id})')
@@ -156,8 +128,6 @@ URL на ваш аватар: {user_avatar}
 Акаунт создан: {user_create}
 Роли: ```{user_roles}```''')
     print(f'Команда info. Запросил - {user_name} (UserID: {user_id})')
-
-
 
 
 # Запуск бота
